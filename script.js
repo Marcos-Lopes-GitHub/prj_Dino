@@ -1,9 +1,11 @@
 const dino = document.querySelector('.dino');
 const background = document.querySelector('.background');
+const score = document.querySelector('.score');
 
 let isJumping = false;
 let isGameOver = false;
 let position = 0;
+let scoreValue = 0;
 
 function handleKeyUp(event) {
   if (event.keyCode === 32) {
@@ -11,6 +13,15 @@ function handleKeyUp(event) {
       jump();
     }
   }
+}
+
+function pad(d){
+  return(d < 10) ? '00' + d.toString() : '0' + d.toString();
+  
+}
+
+function playScore(value){
+  score.innerHTML=pad(value);
 }
 
 function jump() {
@@ -50,21 +61,23 @@ function createCactus() {
   cactus.style.left = cactusPosition + 'px';
 
   let leftTimer = setInterval(() => {
-    if (cactusPosition < -60) {
       // Saiu da tela
+    if (cactusPosition < -60) {
+      // atualiza placar
+      scoreValue += 10;
+      playScore(scoreValue);
       clearInterval(leftTimer);
       background.removeChild(cactus);
     } else if (cactusPosition > 0 && cactusPosition < 60 && position < 60) {
       // Game over
       clearInterval(leftTimer);
       isGameOver = true;
-      document.body.innerHTML = '<h1 class="game-over">Fim de jogo</h1>';
+      document.body.innerHTML = '<h1 class="game-over">Fim de jogo - Placar: ' + pad(scoreValue) +'</h1>';
     } else {
       cactusPosition -= 10;
       cactus.style.left = cactusPosition + 'px';
     }
   }, 20);
-
   setTimeout(createCactus, randomTime);
 }
 
