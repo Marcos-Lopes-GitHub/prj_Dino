@@ -21,7 +21,7 @@ function pad(d){
 }
 
 function playScore(value){
-  score.innerHTML=pad(value);
+  score.innerHTML='Placar: ' + pad(value);
 }
 
 function jump() {

@@ -4,17 +4,18 @@ body {
 }
 
 .score {
-width: 300px;
-height:100px;
+width: 500px;
+height:200px;
 margin-top: 10px;
 margin-left: 1000px;
-font-size: 50px;
-font-family: arial;
+font-size: 30px;
+font-family: 'Press Start 2P', cursive;
 text-align: center;
+color: #666;
 }
 .score ::before {
   content: 'PLACAR';
-  
+  font-family: 'Press Start 2P', cursive
 }
 
 .dino {
@@ -39,8 +40,7 @@ text-align: center;
   text-align: center;
   color: #666;
   margin: 50px 0;
-  font-family: arial;
-
+  font-family: 'Press Start 2P', cursive
 }
 
 @keyframes slideright {
